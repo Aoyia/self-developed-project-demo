@@ -18,7 +18,9 @@
       const app = Vue.createApp({
         template: `
           <div>
+            <h1>Low Code Main Instance</h1>
             <el-button type="primary" @click="reloadComponent">Primary</el-button>
+            <h2>My Custom Component</h2>
             <CustomCalendar :key="componentKey" />
           </div>
         `,
