@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>low code My Custom Component</title>
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/element-plus/dist/index.css"
+    />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./dist/MyCustomComponent.umd.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/element-plus"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const app = Vue.createApp({
+        template: `
+          <div>
+            <el-button type="primary" @click="reloadComponent">Primary</el-button>
+            <CustomCalendar :key="componentKey" />
+          </div>
+        `,
+        setup() {
+          const componentKey = Vue.ref(0);
+          const isComponentRegistered = Vue.ref(false);
+          function reloadComponent() {
+            componentKey.value += 1;
+          }
+
+          return { componentKey, isComponentRegistered, reloadComponent };
+        },
+      });
+      app.use(ElementPlus);
+      app.use(MyCustomComponent);
+      window.MyCustomComponent = null;
+      delete window.MyCustomComponent;
+      app.mount("#app");
+    </script>
+  </body>
+</html>
