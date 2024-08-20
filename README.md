@@ -6,6 +6,7 @@
 
 ```bash
 pnpm install
+# npm i
 ```
 
 ## 2. 打包自开发文件
@@ -14,6 +15,7 @@ pnpm install
 
 ```bash
 pnpm build
+# npm run build
 ```
 
 ## 3. 启动 Demo
